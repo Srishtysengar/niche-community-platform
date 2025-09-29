@@ -21,7 +21,7 @@ exports.addComment = async (req, res) => {
     const comment = new Comment({
       text,
       post: postId,
-      author: req.user.id, // ✅ use "author" to match schema
+      author: req.user.id, //  use "author" to match schema
     });
 
     await comment.save();
@@ -40,7 +40,7 @@ exports.getCommentsByPost = async (req, res) => {
     const { postId } = req.params;
 
     const comments = await Comment.find({ post: postId })
-      .populate("author", "username email") // ✅ use "author"
+      .populate("author", "username email") //  use "author"
       .sort({ createdAt: -1 });
 
     res.json(comments);

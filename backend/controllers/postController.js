@@ -1,9 +1,7 @@
 const Post = require("../models/Post");
 const Community = require("../models/Community");
 
-// --------------------
-// Create a new post
-// --------------------
+//create post
 exports.createPost = async (req, res) => {
   try {
     const { title, content, communityId } = req.body;
@@ -19,7 +17,7 @@ exports.createPost = async (req, res) => {
       title,
       content,
       community: communityId,
-      user: req.user.id, // ✅ comes from auth middleware
+      user: req.user.id, // comes from auth middleware
     });
 
     // If media uploaded

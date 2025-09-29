@@ -32,7 +32,7 @@ exports.addReaction = async (req, res) => {
         );
       }
 
-      // ✅ Return only reaction object
+      //  Return only reaction object
       return res.status(200).json(reaction);
     }
 
@@ -40,7 +40,7 @@ exports.addReaction = async (req, res) => {
     reaction = new Reaction({ user: userId, post: postId, type });
     await reaction.save();
 
-    // 🔔 Notify post owner if not same user
+    // Notify post owner if not same user
     const io = req.app.get("io");
     if (post.user.toString() !== userId) {
       await createNotification(
@@ -52,7 +52,7 @@ exports.addReaction = async (req, res) => {
       );
     }
 
-    // ✅ Return only reaction object
+    // Return only reaction object
     res.status(201).json(reaction);
   } catch (err) {
     res.status(500).json({ message: "Server error", error: err.message });

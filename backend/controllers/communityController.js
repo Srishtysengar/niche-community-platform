@@ -34,7 +34,7 @@ exports.joinCommunity = async (req, res) => {
     community.members.push(req.user.id);
     await community.save();
 
-    // ✅ Return updated community directly
+    //Return updated community directly
     res.json(community);
   } catch (err) {
     res.status(500).json({ message: 'Server error', err });
